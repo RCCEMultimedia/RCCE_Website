@@ -1,0 +1,200 @@
+/* ═══════════════════════════════════════════════════
+   RCCE — HOMEPAGE STYLES
+   Revival Christian Church of Enfield · rccenfield.org
+   Styles specific to index.html only.
+═══════════════════════════════════════════════════ */
+
+/* ── HERO ── */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: calc(var(--nav-h) + 60px) 32px 100px; overflow: hidden; }
+.hero-bg-wrap { position: absolute; inset: 0; z-index: 0; }
+
+/*
+  📷 HERO BACKGROUND PHOTO
+  Save your photo as "hero-photo.jpg" in the root folder,
+  then add: <img src="hero-photo.jpg" class="hero-img" id="heroImg" alt="">
+  Recommended: 1920×1080px, JPG or WebP
+*/
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transition: opacity 1.2s ease; }
+.hero-img.loaded { opacity: 1; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,34,.72) 0%, rgba(10,22,34,.85) 100%), radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,146,42,.18) 0%, transparent 65%); }
+.hero-bg-ph { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,146,42,.22) 0%, transparent 65%), radial-gradient(ellipse 45% 35% at 20% 75%, rgba(45,125,78,.1) 0%, transparent 60%), radial-gradient(ellipse 45% 35% at 80% 75%, rgba(192,57,43,.1) 0%, transparent 60%), linear-gradient(170deg, #0b1520 0%, #0f1e30 40%, #0c1826 100%); display: flex; align-items: flex-start; justify-content: center; padding-top: calc(var(--nav-h) + 14px); }
+.hero-ph-label { display: inline-flex; align-items: center; gap: 9px; background: rgba(201,146,42,.12); border: 1px dashed rgba(201,146,42,.45); border-radius: 99px; padding: 5px 16px; font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: rgba(201,146,42,.8); }
+.hero-ph-label svg { width: 12px; height: 12px; fill: var(--gold); opacity: .8; }
+.hero-rays { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: conic-gradient(from 270deg at 50% -5%, transparent 0deg, rgba(201,146,42,.04) 8deg, transparent 16deg, rgba(201,146,42,.03) 24deg, transparent 32deg, rgba(201,146,42,.05) 40deg, transparent 48deg, rgba(201,146,42,.02) 60deg, transparent 80deg, rgba(201,146,42,.04) 92deg, transparent 108deg); }
+#particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-c { position: relative; z-index: 2; max-width: 940px; }
+.h-ey { display: inline-flex; align-items: center; gap: 14px; color: var(--glt); font-size: .68rem; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fadeUp .8s var(--ease) .2s forwards; }
+.h-ey::before, .h-ey::after { content: ''; width: 28px; height: 1px; background: var(--gold); }
+.h-h1  { font-family: var(--fd); font-size: clamp(50px, 8.5vw, 100px); font-weight: 500; line-height: 1.04; letter-spacing: -.02em; color: #fff; margin-bottom: 22px; opacity: 0; animation: fadeUp 1s var(--ease) .4s forwards; }
+.h-h1 em { font-style: italic; color: var(--glt); }
+.h-sub  { font-family: var(--fd); font-size: clamp(17px, 2.4vw, 23px); font-weight: 400; color: rgba(255,255,255,.72); line-height: 1.55; max-width: 680px; margin: 0 auto 16px; opacity: 0; animation: fadeUp 1s var(--ease) .6s forwards; }
+.h-body { font-size: .97rem; color: rgba(255,255,255,.52); line-height: 1.85; max-width: 560px; margin: 0 auto 44px; opacity: 0; animation: fadeUp 1s var(--ease) .8s forwards; }
+.h-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 1s var(--ease) 1s forwards; }
+.h-scroll { position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,.35); font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; z-index: 2; opacity: 0; animation: fadeIn 1s ease 1.5s forwards; }
+.sbar { width: 1px; height: 44px; background: linear-gradient(var(--gold), transparent); animation: bounce 2s ease-in-out infinite; }
+
+/* ── SERVICE STRIP ── */
+.sstrip { background: var(--gold); }
+.sstrip-in { max-width: var(--max); margin: 0 auto; padding: 0 32px; display: flex; align-items: stretch; }
+.ss { display: flex; align-items: center; gap: 13px; padding: 18px 28px; flex: 1; border-right: 1px solid rgba(255,255,255,.25); }
+.ss:last-child { border-right: none; }
+.ss-ico { width: 38px; height: 38px; background: rgba(255,255,255,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ss-ico svg { width: 18px; height: 18px; fill: #fff; }
+.ss-lbl { font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.78); line-height: 1; margin-bottom: 3px; }
+.ss-val { font-size: .95rem; font-weight: 700; color: #fff; }
+
+/* ── WELCOME ── */
+.welcome { background: var(--cream); }
+.wg { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.wph { position: relative; border-radius: var(--rl); overflow: hidden; aspect-ratio: 4/5; }
+/*
+  📷 WELCOME PHOTO: Replace placeholder with congregation/community photo.
+  Portrait orientation, 800×1000px recommended.
+  Add: <img src="community-photo.jpg" class="wph-fill" alt="Revival Church community" id="communityImg">
+*/
+.wph-fill { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0; transition: opacity .6s; z-index: 2; }
+.wph-fill.loaded { opacity: 1; }
+.wph .ph { height: 100%; border-radius: 0; border: 2px dashed rgba(201,146,42,.5); }
+.wph-over { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; background: linear-gradient(to top, rgba(12,26,40,.95) 0%, transparent 100%); padding: 28px 28px 24px; display: flex; gap: 24px; }
+.wstat { flex: 1; text-align: center; }
+.wstat-n { font-family: var(--fd); font-size: 2.2rem; font-weight: 600; color: var(--glt); line-height: 1; }
+.wstat-l { font-size: .7rem; color: rgba(255,255,255,.5); margin-top: 3px; }
+.wbadge  { position: absolute; top: 20px; right: 20px; width: 90px; height: 90px; background: var(--gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 8px 32px rgba(201,146,42,.45); z-index: 4; }
+.wb-yr { font-family: var(--fd); font-size: 1.5rem; font-weight: 700; color: #fff; line-height: 1; }
+.wb-tx { font-size: .52rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.8); }
+.wcp    { padding-left: 16px; }
+.wcp .sb + .sb { margin-top: 14px; }
+.wtags  { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+.tag    { font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 5px 14px; border-radius: 99px; }
+.tg { background: rgba(45,125,78,.1);  color: var(--grn); }
+.ta { background: rgba(201,146,42,.1); color: var(--gold); }
+.tr { background: rgba(192,57,43,.1);  color: var(--red); }
+.wbtns  { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+/* ── JOIN US (Sunday services grid) ── */
+.join { background: var(--navy); padding: 80px 32px; }
+.join-in { max-width: var(--max); margin: 0 auto; }
+.join-hd { text-align: center; margin-bottom: 52px; }
+.svcs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.07); border-radius: var(--rl); overflow: hidden; }
+.svc { background: rgba(255,255,255,.04); padding: 36px 22px; text-align: center; transition: background .25s; }
+.svc:hover { background: rgba(201,146,42,.09); }
+.svc-ico { width: 52px; height: 52px; margin: 0 auto 16px; background: rgba(201,146,42,.14); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.svc-ico svg { width: 22px; height: 22px; fill: var(--gold); }
+.svc-name { font-family: var(--fd); font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.svc-time { font-size: 1.35rem; font-weight: 700; color: var(--glt); margin-bottom: 10px; }
+.svc-desc { font-size: .8rem; color: rgba(255,255,255,.45); line-height: 1.65; }
+.onrow { margin-top: 32px; padding: 26px 34px; background: rgba(255,255,255,.04); border-radius: var(--rl); border: 1px solid rgba(255,255,255,.07); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.onrow h3 { font-family: var(--fd); font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.onrow p  { font-size: .84rem; color: rgba(255,255,255,.5); }
+
+/* ── PILLARS ── */
+.pillars { background: var(--wwht); padding: 100px 32px; }
+.pillars-hd { text-align: center; margin-bottom: 58px; }
+.pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: var(--rl); overflow: hidden; }
+.pl { padding: 52px 40px; position: relative; overflow: hidden; transition: transform .3s var(--ease), box-shadow .3s; }
+.pl:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.22); z-index: 1; }
+.pl:nth-child(1) { background: var(--navy); }
+.pl:nth-child(2) { background: var(--gold); }
+.pl:nth-child(3) { background: var(--grn);  }
+.pl-num  { font-family: var(--fd); font-size: 7rem; font-weight: 700; line-height: 1; opacity: .08; position: absolute; top: 14px; right: 24px; color: #fff; }
+.pl-ico  { width: 52px; height: 52px; background: rgba(255,255,255,.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 26px; }
+.pl-ico svg { width: 26px; height: 26px; fill: #fff; }
+.pl-title { font-family: var(--fd); font-size: 1.8rem; font-weight: 600; color: #fff; margin-bottom: 14px; }
+.pl-body  { font-size: .93rem; line-height: 1.82; color: rgba(255,255,255,.72); }
+.pl-link  { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.85); margin-top: 26px; border-bottom: 1px solid rgba(255,255,255,.3); padding-bottom: 2px; transition: gap .2s, border-color .2s; }
+.pl-link:hover { gap: 12px; border-color: rgba(255,255,255,.8); }
+
+/* ── PASTORS PREVIEW ── */
+.pastors-sec { background: var(--cream); padding: 100px 32px; }
+.pas-grid { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: 40px; align-items: center; margin-top: 56px; }
+.pas-card { background: #fff; border: 1px solid var(--bdr); border-radius: var(--rl); overflow: hidden; transition: all .25s var(--ease); }
+.pas-card:hover { box-shadow: 0 12px 40px rgba(201,146,42,.12); transform: translateY(-4px); }
+/*
+  📷 PASTOR PHOTOS — replace the .ph inside each .pas-photo with:
+  <img src="pastor-mulenga.jpg" alt="Dr Mulenga Chanda" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;">
+*/
+.pas-photo { aspect-ratio: 3/4; position: relative; overflow: hidden; }
+.pas-photo .ph { height: 100%; border-radius: 0; border: none; background: #ede6dc; }
+.pas-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.pas-info { padding: 22px 24px; }
+.pas-role { font-size: .65rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.pas-name { font-family: var(--fd); font-size: 1.4rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.pas-desc { font-size: .84rem; color: var(--muted); line-height: 1.65; }
+.pastors-copy { padding-left: 16px; }
+.pastors-copy .sb { max-width: 100%; }
+
+/* ── WATCH ONLINE ── */
+.watch { background: var(--wwht); padding: 100px 32px; }
+.watch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+/*
+  📷 VIDEO THUMBNAIL / EMBED
+  Option A — YouTube iframe:
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_ID"
+            frameborder="0" allowfullscreen style="position:absolute;inset:0;"></iframe>
+  Option B — thumbnail image:
+    <img src="sermon-thumbnail.jpg" alt="Latest sermon" style="width:100%;height:100%;object-fit:cover;">
+*/
+.watch-vis { position: relative; border-radius: var(--rl); overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.14); }
+.watch-ph-wrap { aspect-ratio: 16/9; background: var(--navy); position: relative; }
+.watch-ph-wrap .ph { height: 100%; border-radius: 0; border: none; }
+.play-over { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; z-index: 4; }
+.play-btn { width: 74px; height: 74px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 0 rgba(201,146,42,.45); animation: pulse 2.5s ease-in-out infinite; transition: transform .3s; cursor: pointer; }
+.play-btn:hover { transform: scale(1.1); }
+.play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+.watch-lbl { font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(201,146,42,.5); } 70% { box-shadow: 0 0 0 22px rgba(201,146,42,0); } 100% { box-shadow: 0 0 0 0 rgba(201,146,42,0); } }
+
+/* ── SOCIAL ACTION PREVIEW ── */
+.sa { background: var(--navy); padding: 100px 32px; }
+.sa-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+/*
+  📷 SOCIAL ACTION PHOTO — replace placeholder with community/outreach photo
+  Landscape orientation recommended — 800×600px or similar.
+*/
+.sa-ph-wrap { border-radius: var(--rl); overflow: hidden; aspect-ratio: 4/3; position: relative; }
+.sa-ph-wrap .ph { height: 100%; border-radius: 0; border: none; background: #1a2d40; border: 2px dashed rgba(201,146,42,.35); }
+
+/* ── CTA (homepage version) ── */
+.cta { position: relative; padding: 120px 32px; text-align: center; overflow: hidden; }
+.cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,146,42,.13) 0%, transparent 70%), var(--navy2); }
+.cta-c  { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.cta-t  { font-family: var(--fd); font-size: clamp(38px, 5vw, 62px); font-weight: 500; color: #fff; line-height: 1.1; margin-bottom: 18px; }
+.cta-t em { font-style: italic; color: var(--glt); }
+.cta-b  { font-size: 1.02rem; color: rgba(255,255,255,.6); line-height: 1.85; margin-bottom: 40px; }
+.cta-acts { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── QUICK LINKS ── */
+.ql { background: var(--wwht); padding: 80px 32px; }
+.ql-grid  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 48px; }
+.qlc { background: #fff; border: 1px solid var(--bdr); border-radius: var(--rl); padding: 28px 20px; text-align: center; cursor: pointer; transition: all .25s var(--ease); display: block; }
+.qlc:hover { border-color: var(--gold); box-shadow: 0 10px 36px rgba(201,146,42,.1); transform: translateY(-5px); }
+.ql-em    { font-size: 1.9rem; margin-bottom: 10px; display: block; }
+.ql-title { font-family: var(--fd); font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.ql-desc  { font-size: .79rem; color: var(--light); line-height: 1.6; }
+
+/* ── HOME RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .svcs     { grid-template-columns: repeat(2, 1fr); }
+  .pas-grid { grid-template-columns: 1fr 1fr; }
+  .pastors-copy { display: none; }
+}
+@media (max-width: 900px) {
+  .wg, .watch-grid, .sa-grid { grid-template-columns: 1fr; gap: 48px; }
+  .wcp   { padding-left: 0; }
+  .pgrid { grid-template-columns: 1fr; }
+  .pl    { border-radius: 0; }
+  .ql-grid { grid-template-columns: repeat(2, 1fr); }
+  .pas-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .join, .sa, .pastors-sec, .watch, .pillars, .cta, .ql, .welcome { padding: 64px 20px; }
+  .sstrip-in { flex-wrap: wrap; padding: 0 20px; }
+  .ss        { flex: 1 1 50%; border-bottom: 1px solid rgba(255,255,255,.2); padding: 14px; }
+  .ss:nth-child(3), .ss:nth-child(4) { border-bottom: none; }
+  .svcs      { grid-template-columns: 1fr; }
+  .pas-grid  { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .h-acts, .cta-acts { flex-direction: column; align-items: center; }
+  .ql-grid  { grid-template-columns: 1fr; }
+}
