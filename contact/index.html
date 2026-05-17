@@ -96,6 +96,7 @@
       📷 HERO PHOTO — Add a welcoming group/congregation photo here.
       <img src="../images/contact-hero.jpg" alt="Revival Church Enfield community" class="page-hero-img" id="pageHeroImg">
     -->
+      <img src="/assets/img/pastors/pastor_nick2.webp" alt="Revival Church Enfield community" class="page-hero-img" id="pageHeroImg">
     <div class="page-hero-ph">
       <span class="page-hero-ph-label">
         <svg viewBox="0 0 24 24"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/></svg>
@@ -129,7 +130,13 @@
           create a form and replace "YOUR_FORM_ID" below:
           <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         -->
-        <form action="mailto:info@rccenfield.org" method="post" enctype="text/plain" style="margin-top:32px;" novalidate>
+        <div id="form-success" style="display:none;background:var(--cream);border:2px solid var(--gold);border-radius:var(--rl);padding:40px 32px;text-align:center;margin-top:32px;">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <h3 class="st" style="font-size:clamp(22px,3vw,30px);">Thank You <em>for Getting in Touch</em></h3>
+          <p class="sb" style="margin-top:12px;">We have received your message and will get back to you shortly. May God bless you!</p>
+        </div>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="post" style="margin-top:32px;">
+          <input type="hidden" name="access_key" value="ce2ab74b-4835-4389-9e4f-cb8ea45e8b5e">
           <div class="form-row">
             <div class="form-group">
               <label for="firstname">First Name *</label>
@@ -229,7 +236,7 @@
           📷 Add a photo: <img src="../images/find-us.jpg" alt="How to find Revival Church Enfield">
         -->
         <div class="ph" style="height:100%;border-radius:0;border:none;">
-          <div class="ph-inner"><div class="ph-ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></div><div class="ph-hint" style="color:rgba(255,255,255,.3);">Add photo</div></div>
+          <img src="/assets/img/church-building.webp" alt="Revival Church Enfield contact information">
         </div>
       </div>
       <div class="xl-over"><span class="xl-title">How to Find Us</span></div>
@@ -237,7 +244,7 @@
     <a href="../who_we_are/" class="xl">
       <div class="xl-ph-wrap">
         <div class="ph" style="height:100%;border-radius:0;border:none;">
-          <div class="ph-inner"><div class="ph-ico"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div><div class="ph-hint" style="color:rgba(255,255,255,.3);">Add photo</div></div>
+          <img src="/assets/img/pastors/pastor_nick2.webp" alt="Revival Church Enfield who we are">
         </div>
       </div>
       <div class="xl-over"><span class="xl-title">Who We Are</span></div>
@@ -245,7 +252,8 @@
     <a href="../events/" class="xl">
       <div class="xl-ph-wrap">
         <div class="ph" style="height:100%;border-radius:0;border:none;">
-          <div class="ph-inner"><div class="ph-ico"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg></div><div class="ph-hint" style="color:rgba(255,255,255,.3);">Add photo</div></div>
+          <img src="/assets/img/food.webp" alt="Revival Church Enfield contact information">
+
         </div>
       </div>
       <div class="xl-over"><span class="xl-title">Events</span></div>
@@ -352,6 +360,34 @@
   }, {threshold: 0.1});
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var cyr=document.getElementById('cyr');if(cyr)cyr.textContent=new Date().getFullYear();
+
+  const contactForm = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = contactForm.querySelector('[type=submit]');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(contactForm)
+        });
+        const data = await res.json();
+        if (data.success) {
+          contactForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+          formSuccess.scrollIntoView({behavior:'smooth', block:'center'});
+        } else {
+          btn.disabled = false; btn.textContent = 'Register';
+          alert('Something went wrong. Please try again or email us at info@rccenfield.org');
+        }
+      } catch {
+        btn.disabled = false; btn.textContent = 'Register';
+        alert('Something went wrong. Please try again or email us at info@rccenfield.org');
+      }
+    });
+  }
 </script>
 </body>
 </html>

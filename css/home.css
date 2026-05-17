@@ -52,8 +52,7 @@
   Portrait orientation, 800×1000px recommended.
   Add: <img src="community-photo.jpg" class="wph-fill" alt="Revival Church community" id="communityImg">
 */
-.wph-fill { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: 0; transition: opacity .6s; z-index: 2; }
-.wph-fill.loaded { opacity: 1; }
+.wph-fill { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; z-index: 2; }
 .wph .ph { height: 100%; border-radius: 0; border: 2px dashed rgba(201,146,42,.5); }
 .wph-over { position: absolute; bottom: 0; left: 0; right: 0; z-index: 3; background: linear-gradient(to top, rgba(12,26,40,.95) 0%, transparent 100%); padding: 28px 28px 24px; display: flex; gap: 24px; }
 .wstat { flex: 1; text-align: center; }
