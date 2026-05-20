@@ -360,33 +360,33 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var cyr=document.getElementById('cyr');if(cyr)cyr.textContent=new Date().getFullYear();
 
-  const contactForm = document.getElementById('contact-form');
-  const formSuccess = document.getElementById('form-success');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = contactForm.querySelector('[type=submit]');
-      btn.disabled = true; btn.textContent = 'Sending…';
-      try {
-        const res = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: new FormData(contactForm)
-        });
-        const data = await res.json();
-        if (data.success) {
-          contactForm.style.display = 'none';
-          formSuccess.style.display = 'block';
-          formSuccess.scrollIntoView({behavior:'smooth', block:'center'});
-        } else {
-          btn.disabled = false; btn.textContent = 'Register';
-          alert('Something went wrong. Please try again or email us at info@rccenfield.org');
-        }
-      } catch {
-        btn.disabled = false; btn.textContent = 'Register';
-        alert('Something went wrong. Please try again or email us at info@rccenfield.org');
-      }
-    });
-  }
+  // const contactForm = document.getElementById('contact-form');
+  // const formSuccess = document.getElementById('form-success');
+  // if (contactForm) {
+  //   contactForm.addEventListener('submit', async function(e) {
+  //     e.preventDefault();
+  //     const btn = contactForm.querySelector('[type=submit]');
+  //     btn.disabled = true; btn.textContent = 'Sending…';
+  //     try {
+  //       const res = await fetch('https://api.web3forms.com/submit', {
+  //         method: 'POST',
+  //         body: new FormData(contactForm)
+  //       });
+  //       const data = await res.json();
+  //       if (data.success) {
+  //         contactForm.style.display = 'none';
+  //         formSuccess.style.display = 'block';
+  //         formSuccess.scrollIntoView({behavior:'smooth', block:'center'});
+  //       } else {
+  //         btn.disabled = false; btn.textContent = 'Register';
+  //         alert('Something went wrong. Please try again or email us at info@rccenfield.org');
+  //       }
+  //     } catch {
+  //       btn.disabled = false; btn.textContent = 'Register';
+  //       alert('Something went wrong. Please try again or email us at info@rccenfield.org');
+  //     }
+  //   });
+  // }
 </script>
 </body>
 </html>
