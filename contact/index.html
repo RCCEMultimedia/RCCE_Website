@@ -135,7 +135,8 @@
           <h3 class="st" style="font-size:clamp(22px,3vw,30px);">Thank You <em>for Getting in Touch</em></h3>
           <p class="sb" style="margin-top:12px;">We have received your message and will get back to you shortly. May God bless you!</p>
         </div>
-        <form id="contact-form" style="margin-top:32px;" netlify>
+        <form id="contact-form" name="contact" method="POST" data-netlify="true" style="margin-top:32px;">
+          <input type="hidden" name="form-name" value="contact">
           <div class="form-row">
             <div class="form-group">
               <label for="firstname">First Name *</label>
@@ -360,33 +361,32 @@
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var cyr=document.getElementById('cyr');if(cyr)cyr.textContent=new Date().getFullYear();
 
-  // const contactForm = document.getElementById('contact-form');
-  // const formSuccess = document.getElementById('form-success');
-  // if (contactForm) {
-  //   contactForm.addEventListener('submit', async function(e) {
-  //     e.preventDefault();
-  //     const btn = contactForm.querySelector('[type=submit]');
-  //     btn.disabled = true; btn.textContent = 'Sending…';
-  //     try {
-  //       const res = await fetch('https://api.web3forms.com/submit', {
-  //         method: 'POST',
-  //         body: new FormData(contactForm)
-  //       });
-  //       const data = await res.json();
-  //       if (data.success) {
-  //         contactForm.style.display = 'none';
-  //         formSuccess.style.display = 'block';
-  //         formSuccess.scrollIntoView({behavior:'smooth', block:'center'});
-  //       } else {
-  //         btn.disabled = false; btn.textContent = 'Register';
-  //         alert('Something went wrong. Please try again or email us at info@rccenfield.org');
-  //       }
-  //     } catch {
-  //       btn.disabled = false; btn.textContent = 'Register';
-  //       alert('Something went wrong. Please try again or email us at info@rccenfield.org');
-  //     }
-  //   });
-  // }
+  const contactForm = document.getElementById('contact-form');
+  const formSuccess = document.getElementById('form-success');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = contactForm.querySelector('[type=submit]');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(contactForm)).toString()
+        });
+        if (res.ok) {
+          contactForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      } catch {
+        btn.disabled = false; btn.textContent = 'Register';
+        alert('Something went wrong. Please try again or email us at info@rccenfield.org');
+      }
+    });
+  }
 </script>
 </body>
 </html>
