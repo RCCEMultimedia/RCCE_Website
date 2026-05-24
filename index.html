@@ -346,15 +346,13 @@
         <div class="watch-ph-wrap">
           <!--
             📺 YOUTUBE EMBED — @rccenfield channel (ID: UChyFm7aKHO1uW78CkMsTccQ)
-            Uses YouTube's live_stream embed with explicit origin so the player can load
-            correctly in modern browsers and show the current livestream when live,
-            falling back to the channel's latest livestream replay when not live.
+            Embeds the channel's "Live" playlist so the most recent livestream video
+            is shown automatically.
           -->
           <iframe
-            src="https://www.youtube.com/embed/live_stream?channel=UChyFm7aKHO1uW78CkMsTccQ&rel=0&origin=https://rccenfield.org"
-            title="Live stream from Revival Christian Church of Enfield"
+            src="https://www.youtube.com/embed?listType=playlist&list=UULVhyFm7aKHO1uW78CkMsTccQ&index=1&rel=0"
+            title="Latest livestream from Revival Christian Church of Enfield"
             frameborder="0"
-            referrerpolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="lazy"
