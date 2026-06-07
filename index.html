@@ -120,24 +120,16 @@
       <p class="h-sub">Revival Christian Church of Enfield invites you to worship, grow and belong — wherever you are in life.</p>
 
       <div class="hero-live-wrap">
-        <div class="hero-live is-loading" id="heroLive" aria-label="Latest livestream">
+        <div class="hero-live" aria-label="Latest livestream">
           <iframe
-            id="heroYoutube"
-            class="youtube-live-fallback"
-            src="about:blank"
-            data-live-src="https://www.youtube.com/embed/live_stream?channel=UChyFm7aKHO1uW78CkMsTccQ&rel=0&autoplay=1&mute=1&playsinline=1"
-            data-fallback-src="https://www.youtube.com/embed?listType=playlist&list=PLojW8p6rrR97D6fLrDWlAiWQo6iJ0AXLs&index=1&rel=0&autoplay=1&mute=1&playsinline=1"
-            title="Live or latest video from Revival Christian Church of Enfield"
+            src="https://www.youtube.com/embed?listType=playlist&list=UULVhyFm7aKHO1uW78CkMsTccQ&index=1&rel=0&autoplay=1&mute=1&playsinline=1"
+            title="Latest livestream from Revival Christian Church of Enfield"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
             loading="eager"
             style="position:absolute;inset:0;width:100%;height:100%;border:none;"
           ></iframe>
-          <div class="hero-video-loader" aria-live="polite">
-            <span class="hero-video-spinner" aria-hidden="true"></span>
-            <span>Loading service video</span>
-          </div>
         </div>
         <div class="hero-social" aria-label="Watch Revival live on social platforms">
           <a href="https://instagram.com/rccenfield" target="_blank" rel="noopener">Instagram</a>
@@ -601,98 +593,6 @@
     if (heroImg.complete && heroImg.naturalWidth) showHero();
     else { heroImg.onload = showHero; heroImg.onerror = () => {}; }
   }
-
-  /* Hero YouTube: decide in the background, then reveal live or latest playlist video. */
-  (() => {
-    const iframe = document.getElementById('heroYoutube');
-    const frameWrap = document.getElementById('heroLive');
-    if (!iframe || !iframe.dataset.liveSrc || !iframe.dataset.fallbackSrc) return;
-
-    const origin = encodeURIComponent(window.location.origin);
-    const withJsApi = src => {
-      const joiner = src.includes('?') ? '&' : '?';
-      return `${src}${joiner}enablejsapi=1&origin=${origin}`;
-    };
-    const fallbackSrc = iframe.dataset.fallbackSrc;
-    const liveSrc = withJsApi(iframe.dataset.liveSrc);
-    const probe = document.createElement('iframe');
-    let player;
-    let settled = false;
-    let apiTimer;
-    iframe.removeAttribute('src');
-    iframe.classList.add('is-pending');
-
-    const revealVideo = (src, title) => {
-      iframe.src = src;
-      iframe.title = title;
-      iframe.addEventListener('load', () => {
-        iframe.classList.remove('is-pending');
-        if (frameWrap) frameWrap.classList.remove('is-loading');
-      }, {once:true});
-      window.setTimeout(() => {
-        iframe.classList.remove('is-pending');
-        if (frameWrap) frameWrap.classList.remove('is-loading');
-      }, 1600);
-    };
-
-    const stopProbe = () => {
-      if (settled) return;
-      settled = true;
-      if (player && typeof player.destroy === 'function') player.destroy();
-      else probe.remove();
-      revealVideo(fallbackSrc, 'Latest video from Revival Christian Church of Enfield');
-    };
-
-    const keepLive = () => {
-      if (settled) return;
-      settled = true;
-      revealVideo(iframe.dataset.liveSrc, 'Live video from Revival Christian Church of Enfield');
-      if (player && typeof player.destroy === 'function') player.destroy();
-      else probe.remove();
-    };
-
-    const startProbe = () => {
-      if (settled) return;
-      window.clearTimeout(apiTimer);
-      probe.src = liveSrc;
-      probe.title = 'Checking whether Revival Christian Church of Enfield is live';
-      probe.setAttribute('aria-hidden', 'true');
-      probe.tabIndex = -1;
-      probe.style.cssText = 'position:absolute;width:1px;height:1px;left:-9999px;top:auto;opacity:0;pointer-events:none;';
-      document.body.appendChild(probe);
-      window.setTimeout(stopProbe, 2500);
-
-      player = new YT.Player(probe, {
-        events: {
-          onReady: event => {
-            event.target.mute();
-            event.target.playVideo();
-          },
-          onStateChange: event => {
-            if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.BUFFERING) keepLive();
-          },
-          onError: stopProbe
-        }
-      });
-    };
-
-    const previousReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      if (typeof previousReady === 'function') previousReady();
-      startProbe();
-    };
-
-    if (window.YT && window.YT.Player) {
-      startProbe();
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      script.async = true;
-      script.onerror = stopProbe;
-      apiTimer = window.setTimeout(stopProbe, 2500);
-      document.head.appendChild(script);
-    }
-  })();
 
   /* Particles */
   (() => {
