@@ -26,11 +26,6 @@
 .hero-copy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr); grid-template-areas: "ey live" "h1 live" "sub live" "body live" "acts live"; column-gap: 56px; align-items: start; text-align: left; }
 .hero-live-wrap { grid-area: live; opacity: 0; animation: fadeUp 1s var(--ease) .9s forwards; }
 .hero-live { aspect-ratio: 16/9; width: 100%; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 70px rgba(0,0,0,.35); position: relative; background: rgba(8,18,28,.8); }
-.hero-live iframe { opacity: 1; transition: opacity .25s ease; }
-.hero-live iframe.is-pending { opacity: 0; pointer-events: none; }
-.hero-video-loader { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 12px; z-index: 2; background: radial-gradient(ellipse 70% 70% at 50% 35%, rgba(201,146,42,.16), transparent 62%), rgba(8,18,28,.92); color: rgba(255,255,255,.72); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.hero-live.is-loading .hero-video-loader { display: flex; }
-.hero-video-spinner { width: 34px; height: 34px; border: 3px solid rgba(255,255,255,.18); border-top-color: var(--glt); border-radius: 50%; animation: spin .8s linear infinite; }
 .hero-social { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
 .hero-social a { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--glt); border: 1px solid rgba(201,146,42,.45); border-radius: 999px; padding: 7px 14px; background: rgba(8,18,28,.45); transition: background .2s ease, border-color .2s ease; }
 .hero-social a:hover { background: rgba(201,146,42,.18); border-color: rgba(201,146,42,.72); }
@@ -154,7 +149,6 @@
 .play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
 .watch-lbl { font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55); }
 @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(201,146,42,.5); } 70% { box-shadow: 0 0 0 22px rgba(201,146,42,0); } 100% { box-shadow: 0 0 0 0 rgba(201,146,42,0); } }
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── SOCIAL ACTION PREVIEW ── */
 .sa { background: var(--navy); padding: 100px 32px; }
