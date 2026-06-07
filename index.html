@@ -602,96 +602,161 @@
     else { heroImg.onload = showHero; heroImg.onerror = () => {}; }
   }
 
-  /* Hero YouTube: decide in the background, then reveal live or latest playlist video. */
+  /* Hero YouTube: poll the channel's live endpoint, then show live or the playlist fallback. */
   (() => {
     const iframe = document.getElementById('heroYoutube');
     const frameWrap = document.getElementById('heroLive');
     if (!iframe || !iframe.dataset.liveSrc || !iframe.dataset.fallbackSrc) return;
 
     const origin = encodeURIComponent(window.location.origin);
-    const withJsApi = src => {
-      const joiner = src.includes('?') ? '&' : '?';
-      return `${src}${joiner}enablejsapi=1&origin=${origin}`;
-    };
+    const liveSrc = iframe.dataset.liveSrc;
     const fallbackSrc = iframe.dataset.fallbackSrc;
-    const liveSrc = withJsApi(iframe.dataset.liveSrc);
-    const probe = document.createElement('iframe');
+    const probeSrc = (() => {
+      const joiner = liveSrc.includes('?') ? '&' : '?';
+      return `${liveSrc}${joiner}enablejsapi=1&origin=${origin}`;
+    })();
+    const PROBE_TIMEOUT = 12000;
+    const POLL_INTERVAL = 60000;
     let player;
-    let settled = false;
-    let apiTimer;
+    let probe;
+    let probeTimer;
+    let pollTimer;
+    let apiRequested = false;
+    let apiReady = Boolean(window.YT && window.YT.Player);
+    let visibleSrc = '';
+    let liveMisses = 0;
+
     iframe.removeAttribute('src');
     iframe.classList.add('is-pending');
 
+    const setLoading = isLoading => {
+      if (frameWrap) frameWrap.classList.toggle('is-loading', isLoading);
+      iframe.classList.toggle('is-pending', isLoading);
+    };
+
     const revealVideo = (src, title) => {
-      iframe.src = src;
-      iframe.title = title;
-      iframe.addEventListener('load', () => {
-        iframe.classList.remove('is-pending');
-        if (frameWrap) frameWrap.classList.remove('is-loading');
-      }, {once:true});
-      window.setTimeout(() => {
-        iframe.classList.remove('is-pending');
-        if (frameWrap) frameWrap.classList.remove('is-loading');
-      }, 1600);
+      window.clearTimeout(probeTimer);
+      if (visibleSrc !== src) {
+        iframe.src = src;
+        iframe.title = title;
+        visibleSrc = src;
+        setLoading(true);
+        iframe.addEventListener('load', () => setLoading(false), {once:true});
+      }
+      window.setTimeout(() => setLoading(false), 1600);
     };
 
-    const stopProbe = () => {
-      if (settled) return;
-      settled = true;
-      if (player && typeof player.destroy === 'function') player.destroy();
-      else probe.remove();
+    const cleanupProbe = () => {
+      window.clearTimeout(probeTimer);
+      if (player && typeof player.destroy === 'function') {
+        player.destroy();
+      } else if (probe) {
+        probe.remove();
+      }
+      player = null;
+      probe = null;
+    };
+
+    const schedulePoll = () => {
+      window.clearTimeout(pollTimer);
+      pollTimer = window.setTimeout(checkForLiveStream, POLL_INTERVAL);
+    };
+
+    const showFallback = () => {
+      cleanupProbe();
+
+      // Do not drop an already-playing live embed because of one slow/failed poll.
+      // Require two consecutive misses before returning to the playlist.
+      if (visibleSrc === liveSrc && liveMisses < 2) {
+        liveMisses += 1;
+        schedulePoll();
+        return;
+      }
+
+      liveMisses = 0;
       revealVideo(fallbackSrc, 'Latest video from Revival Christian Church of Enfield');
+      schedulePoll();
     };
 
-    const keepLive = () => {
-      if (settled) return;
-      settled = true;
-      revealVideo(iframe.dataset.liveSrc, 'Live video from Revival Christian Church of Enfield');
-      if (player && typeof player.destroy === 'function') player.destroy();
-      else probe.remove();
+    const showLive = () => {
+      cleanupProbe();
+      liveMisses = 0;
+      revealVideo(liveSrc, 'Live video from Revival Christian Church of Enfield');
+      schedulePoll();
     };
 
-    const startProbe = () => {
-      if (settled) return;
-      window.clearTimeout(apiTimer);
-      probe.src = liveSrc;
+    const hasResolvedLiveVideo = target => {
+      if (!target || typeof target.getVideoData !== 'function') return false;
+      const data = target.getVideoData();
+      return Boolean(data && data.video_id);
+    };
+
+    const requestYouTubeApi = () => {
+      if (apiRequested) return;
+      apiRequested = true;
+      const previousReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        apiReady = true;
+        if (typeof previousReady === 'function') previousReady();
+        checkForLiveStream();
+      };
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = showFallback;
+      document.head.appendChild(script);
+    };
+
+    function checkForLiveStream() {
+      window.clearTimeout(pollTimer);
+      cleanupProbe();
+
+      if (!apiReady && !(window.YT && window.YT.Player)) {
+        requestYouTubeApi();
+        probeTimer = window.setTimeout(showFallback, PROBE_TIMEOUT);
+        return;
+      }
+
+      apiReady = true;
+      probe = document.createElement('iframe');
+      probe.src = probeSrc;
       probe.title = 'Checking whether Revival Christian Church of Enfield is live';
       probe.setAttribute('aria-hidden', 'true');
       probe.tabIndex = -1;
       probe.style.cssText = 'position:absolute;width:1px;height:1px;left:-9999px;top:auto;opacity:0;pointer-events:none;';
       document.body.appendChild(probe);
-      window.setTimeout(stopProbe, 2500);
+
+      probeTimer = window.setTimeout(showFallback, PROBE_TIMEOUT);
 
       player = new YT.Player(probe, {
         events: {
           onReady: event => {
-            event.target.mute();
-            event.target.playVideo();
+            const target = event.target;
+            if (target && typeof target.mute === 'function') target.mute();
+
+            // YouTube resolves /embed/live_stream?channel=... to a concrete video only
+            // when the channel has an active live broadcast. Use that resolution instead
+            // of relying on autoplay, which can be delayed or blocked by browsers.
+            window.setTimeout(() => {
+              if (hasResolvedLiveVideo(target)) showLive();
+              else if (target && typeof target.playVideo === 'function') target.playVideo();
+            }, 300);
           },
           onStateChange: event => {
-            if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.BUFFERING) keepLive();
+            if (
+              event.data === YT.PlayerState.PLAYING ||
+              event.data === YT.PlayerState.BUFFERING ||
+              event.data === YT.PlayerState.CUED
+            ) {
+              showLive();
+            }
           },
-          onError: stopProbe
+          onError: showFallback
         }
       });
-    };
-
-    const previousReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      if (typeof previousReady === 'function') previousReady();
-      startProbe();
-    };
-
-    if (window.YT && window.YT.Player) {
-      startProbe();
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      script.async = true;
-      script.onerror = stopProbe;
-      apiTimer = window.setTimeout(stopProbe, 2500);
-      document.head.appendChild(script);
     }
+
+    checkForLiveStream();
   })();
 
   /* Particles */
