@@ -3,45 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>How to Find Us | Revival Christian Church of Enfield</title>
-  <meta name="description" content="Revival Christian Church of Enfield — The Revive Centre, 47 London Road, Enfield EN2 6DS. Sunday services 11am, Friday Youth Club 6pm. Directions, transport info and service times.">
-  <meta property="og:title" content="How to Find Us | Revival Christian Church of Enfield">
-  <meta property="og:description" content="Find Revival Christian Church of Enfield at The Revive Centre, 47 London Road, Enfield EN2 6DS.">
+  <title>Calendar | Revival Christian Church of Enfield</title>
+  <meta name="description" content="Church calendar for Revival Christian Church of Enfield — services, gatherings, youth events and more.">
+  <meta property="og:title" content="Calendar | Revival Christian Church of Enfield">
+  <meta property="og:description" content="View the Revival Church Enfield calendar — services, community events, youth nights and more.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rccenfield.org/how_to_find_us/">
+  <meta property="og:url" content="https://rccenfield.org/calendar/">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://rccenfield.org/how_to_find_us/">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Church","name":"Revival Christian Church of Enfield","url":"https://rccenfield.org","telephone":"+442083665007","email":"info@rccenfield.org","address":{"@type":"PostalAddress","streetAddress":"47 London Road","addressLocality":"Enfield","addressRegion":"Middlesex","postalCode":"EN2 6DS","addressCountry":"GB"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"11:00","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"18:00","closes":"20:00"}]}</script>
+  <link rel="canonical" href="https://rccenfield.org/calendar/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Church","name":"Revival Christian Church of Enfield","url":"https://rccenfield.org","telephone":"+442083665007","email":"info@rccenfield.org","address":{"@type":"PostalAddress","streetAddress":"47 London Road","addressLocality":"Enfield","addressRegion":"Middlesex","postalCode":"EN2 6DS","addressCountry":"GB"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/global.css">
   <style>
-    .find-grid   { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-    .times-card  { background: var(--navy3); border-radius: var(--rl); padding: 32px 36px; }
-    .times-card .ey { color: var(--glt); }
-    .times-card .st { color: #fff; font-size: clamp(24px,2.8vw,32px); }
-    .times-card .st em { font-style: italic; color: var(--glt); }
-    .time-row    { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .time-row:last-child { border-bottom: none; }
-    .time-label  { font-family: 'Outfit',sans-serif; font-size: .88rem; color: rgba(255,255,255,.7); }
-    .time-val    { font-family: 'Outfit',sans-serif; font-size: .95rem; font-weight: 600; color: var(--glt); }
-    .transport-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-    .t-card      { background: #fff; border-radius: var(--rl); padding: 28px 24px; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
-    .t-card-ico  { width: 48px; height: 48px; border-radius: 50%; background: var(--cream); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-    .t-card-ico svg { width: 24px; height: 24px; fill: var(--gold); }
-    .t-card h3   { font-family: 'Cormorant Garamond',serif; font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
-    .t-card p    { font-family: 'Outfit',sans-serif; font-size: .87rem; color: var(--navy2); line-height: 1.65; }
-    .dress-block { background: var(--gold); border-radius: var(--rl); padding: 40px 48px; text-align: center; }
-    .dress-block .st { color: var(--navy); font-size: clamp(26px,3vw,38px); }
-    .dress-block .st em { font-style: italic; }
-    .dress-block .sb { color: rgba(12,26,40,.8); max-width: 640px; margin: 16px auto 0; font-size: 1rem; }
-    @media (max-width: 900px) {
-      .find-grid { grid-template-columns: 1fr; }
-      .transport-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .dress-block { padding: 32px 24px; }
+    .churchsuite-wrap { background: #fff; border-radius: var(--rl); border: 2px dashed var(--gold); padding: 56px 40px; text-align: center; margin: 0 0 48px; }
+    .churchsuite-wrap .st { font-size: clamp(22px,2.5vw,30px); }
+    .churchsuite-wrap .sb { max-width: 560px; margin: 12px auto 24px; }
+    .events-note  { font-family: 'Outfit',sans-serif; font-size: .82rem; color: var(--navy2); margin-top: 16px; }
+    .stay-grid    { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .stay-card    { background: #fff; border-radius: var(--rl); padding: 24px 20px; box-shadow: 0 2px 12px rgba(0,0,0,.06); text-align: center; }
+    .stay-card-ico { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .stay-card h3 { font-family: 'Outfit',sans-serif; font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .stay-card p  { font-family: 'Outfit',sans-serif; font-size: .82rem; color: var(--navy2); line-height: 1.6; }
+    .stay-card a  { font-family: 'Outfit',sans-serif; font-size: .8rem; font-weight: 700; color: var(--gold); margin-top: 10px; display: inline-block; }
+    @media (max-width: 768px) {
+      .stay-grid { grid-template-columns: 1fr; }
+      .churchsuite-wrap { padding: 36px 24px; }
     }
   </style>
 </head>
@@ -70,8 +58,8 @@
       <li class="ni"><a href="../our_faith/" class="nl">Our Faith</a></li>
       <li class="ni"><a href="../social_action/" class="nl">Social Action</a></li>
       <li class="ni"><a href="../events/" class="nl">Events</a></li>
-      <li class="ni"><a href="../calendar/" class="nl">Calendar</a></li>
-      <li class="ni"><a href="../how_to_find_us/" class="nl active">Find Us</a></li>
+      <li class="ni"><a href="../calendar/" class="nl active">Calendar</a></li>
+      <li class="ni"><a href="../how_to_find_us/" class="nl">Find Us</a></li>
       <li class="ni"><a href="../contact/" class="nl">Contact</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:14px;flex-shrink:0;">
@@ -108,135 +96,116 @@
 <section class="page-hero" aria-labelledby="ph-h1">
   <div class="page-hero-bg" aria-hidden="true">
     <!--
-      📷 HERO PHOTO — Add a photo of the church exterior or street view of London Road, Enfield.
-      <img src="../images/find-us-hero.jpg" alt="47 London Road Enfield — The Revive Centre" class="page-hero-img">
+      📷 HERO PHOTO — A community events or church gathering photo.
+      <img src="../images/events-hero.jpg" alt="Calendar at Revival Christian Church of Enfield" class="page-hero-img">
     -->
-      <img src="/assets/img/church-building.webp" alt="47 London Road Enfield — The Revive Centre" class="page-hero-img">
+      <img src="/assets/img/food.webp" alt="Calendar at Revival Christian Church of Enfield" class="page-hero-img">
     <div class="page-hero-ph">
       <span class="page-hero-ph-label">
         <svg viewBox="0 0 24 24"><path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3z"/></svg>
-        Add Hero Photo — church exterior / street view
+        Add Hero Photo — church calendar / gathering
       </span>
     </div>
     <div class="page-hero-overlay"></div>
   </div>
   <div class="page-hero-c">
     <p class="page-hero-ey">Revival Christian Church of Enfield</p>
-    <h1 class="page-hero-h1" id="ph-h1">How to <em>Find Us</em></h1>
-    <p class="page-hero-sub">It is a great honour that you choose to spend time with us. We would love to welcome you.</p>
+    <h1 class="page-hero-h1" id="ph-h1">Church <em>Calendar</em></h1>
+    <p class="page-hero-sub">View services, community gatherings, youth nights and more in the Revival calendar.</p>
   </div>
 </section>
 
-<!-- ════════════ ADDRESS & DETAILS ════════════ -->
-<section class="sec" style="background:var(--cream);" aria-labelledby="address-h">
-  <div class="sec-in">
-    <div class="find-grid">
-
-      <!-- Map placeholder -->
-      <div class="reveal">
-        <!--
-          GOOGLE MAPS EMBED:
-          1. Go to maps.google.com
-          2. Search '47 London Road Enfield EN2 6DS'
-          3. Click Share → Embed a map → copy the <iframe> code
-          4. Paste it here replacing this placeholder div
-        -->
-<div style="position:relative;width:100%;padding-bottom:66.67%;height:0;border-radius:var(--rl);overflow:hidden;">
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2476.8329007062353!2d-0.08290922342470093!3d51.64950477184598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761f2505fb68ef%3A0xcba5dad4890c0eeb!2s47%20London%20Rd%2C%20Enfield%20EN2%206DS%2C%20UK!5e0!3m2!1sen!2s!4v1778973443409!5m2!1sen!2s" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-      </div>
-
-      <!-- Details -->
-      <div class="reveal">
-        <p class="ey">Visit Us</p>
-        <h2 class="st" id="address-h">We are <em>Here for You</em></h2>
-        <div class="gbar"></div>
-        <p class="sb">It is a great honour that you choose to spend an hour of your time with us at Revival Christian Church of Enfield. We look forward to welcoming you into the Revive Family.</p>
-
-        <div class="times-card" style="margin-top:28px;">
-          <p class="ey">Service Times</p>
-          <h3 class="st">Join <em>Us</em></h3>
-          <div style="margin-top:16px;">
-            <div class="time-row">
-              <span class="time-label">Sunday Adult Service</span>
-              <span class="time-val">11:00 AM</span>
-            </div>
-            <div class="time-row">
-              <span class="time-label">Kids &amp; Toddlers (Sunday)</span>
-              <span class="time-val">11:20 AM</span>
-            </div>
-            <div class="time-row">
-              <span class="time-label">Youth Revived (Sunday)</span>
-              <span class="time-val">11:20 AM</span>
-            </div>
-            <div class="time-row">
-              <span class="time-label">Friday Youth Club</span>
-              <span class="time-val">6:00 PM</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-info-block" style="margin-top:28px;">
-          <div class="ci-row">
-            <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg></div>
-            <div><div class="ci-label">Address</div><div class="ci-val">The Revive Centre<br>47 London Road<br>Enfield, Middlesex EN2 6DS</div></div>
-          </div>
-          <div class="ci-row">
-            <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
-            <div><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:+442083665007">+44 (0)20 8366 5007</a></div></div>
-          </div>
-          <div class="ci-row">
-            <div class="ci-ico"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
-            <div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:info@rccenfield.org">info@rccenfield.org</a></div></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ GETTING HERE ════════════ -->
-<section class="sec" aria-labelledby="transport-h">
+<!-- ════════════ CHURCH CALENDAR ════════════ -->
+<section class="sec" style="background:var(--cream);" aria-labelledby="cal-h">
   <div class="sec-in">
     <div style="text-align:center;max-width:600px;margin:0 auto 48px;" class="reveal">
-      <p class="ey">Getting Here</p>
-      <h2 class="st" id="transport-h">By Bus, <em>Tube or Car</em></h2>
+      <p class="ey">Church Calendar</p>
+      <h2 class="st" id="cal-h">See What's <em>Coming Up</em></h2>
       <div class="gbar" style="margin:18px auto;"></div>
     </div>
-    <div class="transport-grid">
-      <div class="t-card reveal">
-        <div class="t-card-ico">
-          <svg viewBox="0 0 24 24"><path d="M12 2c-4.42 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h2l2-2h4l2 2h2v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-3.58-4-8-4zM7.5 17c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm3.5-7H6V6h5v4zm2 0V6h5v4h-5zm3 7c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+
+    <!--
+      CHURCHSUITE CALENDAR WIDGET
+      ─────────────────────────
+      1. Log in to your ChurchSuite account at app.churchsuite.com
+      2. Go to: Connect → Embed Widgets → Calendar
+      3. Configure the widget
+      4. Copy the generated <iframe> or <script> embed code
+      5. Paste it here, replacing this entire placeholder <div>
+
+      The embed will automatically show your ChurchSuite calendar.
+      If you need help, see: https://support.churchsuite.com/article/embed-widgets
+    -->
+    <!--
+      <iframe src="https://rcce.churchsuite.com/embed/calendar/events?body_bgcolor=fdf8f0&amp;categories=&amp;event_bgcolor=FFFFFF&amp;event_border=&amp;featured=NULL&amp;filters_bgcolor=FFFFFF&amp;heading_color=444444&amp;icon_color=BBBBBB&amp;layout=grid&amp;merge=signup_to_sequence&amp;num_results=&amp;show_categories=0&amp;show_search=1&amp;show_sites=0&amp;text_color=666666" style="width:100%;height:1000px;border:none;"></iframe>
+ -->
+    <iframe frameborder="0" height="800" allowtransparent="yes" scrolling="yes" src="https://rcce.churchsuite.com/-/calendar/b406df9e-14d4-453a-91ec-731e8e8e04ef" style="border-width:0" width="100%"></iframe>
+   </div>
+</section>
+
+<!-- ════════════ REGULAR SERVICES ════════════ -->
+<section class="sec" style="background:var(--navy);" aria-labelledby="reg-h">
+  <div class="sec-in">
+    <div style="text-align:center;max-width:600px;margin:0 auto 48px;" class="reveal">
+      <p class="ey" style="color:var(--glt);">Every Week</p>
+      <h2 class="st st-wht" id="reg-h">Regular <em>Services</em></h2>
+      <div class="gbar" style="margin:18px auto;"></div>
+    </div>
+    <div class="stay-grid reveal">
+      <div class="stay-card">
+        <div class="stay-card-ico" style="background:rgba(201,146,42,.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h3>By Bus</h3>
-        <p>Several bus routes serve London Road, Enfield. Check Transport for London (TfL) for live route and timing information to the EN2 area.</p>
+        <h3>Sunday Adult Service</h3>
+        <p>Every Sunday at 11:00 AM<br>The Revive Centre, 47 London Road EN2 6DS</p>
+        <a href="../how_to_find_us/">Plan Your Visit →</a>
       </div>
-      <div class="t-card reveal">
-        <div class="t-card-ico">
-          <svg viewBox="0 0 24 24"><path d="M4 15.5C4 17.43 5.57 19 7.5 19h9C18.43 19 20 17.43 20 15.5V9H4v6.5zM9.5 10c.83 0 1.5.67 1.5 1.5S10.33 13 9.5 13 8 12.33 8 11.5 8.67 10 9.5 10zm5 0c.83 0 1.5.67 1.5 1.5S15.33 13 14.5 13 13 12.33 13 11.5s.67-1.5 1.5-1.5zM21 6H3l1-4h16l1 4z"/></svg>
+      <div class="stay-card">
+        <div class="stay-card-ico" style="background:rgba(201,146,42,.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h3>By Tube</h3>
-        <p>The nearest London Underground station is Enfield Town (Greater Anglia / Overground). From there, take a short bus or taxi ride along London Road to reach The Revive Centre.</p>
+        <h3>Kids &amp; Youth Sunday</h3>
+        <p>Every Sunday at 11:20 AM<br>Kids programme &amp; Youth Revived running simultaneously</p>
+        <a href="../who_we_are/">About Kids &amp; Youth →</a>
       </div>
-      <div class="t-card reveal">
-        <div class="t-card-ico">
-          <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+      <div class="stay-card">
+        <div class="stay-card-ico" style="background:rgba(201,146,42,.15);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h3>By Car</h3>
-        <p>The Revive Centre is located at 47 London Road, Enfield EN2 6DS. Street parking is available nearby on surrounding roads. Please check local signage for restrictions.</p>
+        <h3>Friday Youth Club</h3>
+        <p>Every Friday at 7:00 PM<br>Open to young people — come as you are</p>
+        <a href="../contact/">Get in Touch →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ DRESS CODE ════════════ -->
-<section class="sec" style="background:var(--navy);" aria-label="Dress code">
+<!-- ════════════ STAY CONNECTED ════════════ -->
+<section class="sec" aria-labelledby="social-h">
   <div class="sec-in">
-    <div class="dress-block reveal" style="background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);">
-      <p class="ey" style="color:var(--glt);">What to Wear</p>
-      <h2 class="st" style="color:#fff;font-size:clamp(28px,3.5vw,42px);">You Are Free <em>to Be You!!!</em></h2>
-      <p class="sb" style="color:rgba(255,255,255,.75);max-width:680px;margin:20px auto 0;">Come as you are and have fun with us enjoying times of refreshing that come from the presence of the Lord! It is not about what we wear — but all about Jesus!</p>
+    <div style="text-align:center;max-width:640px;margin:0 auto;" class="reveal">
+      <p class="ey">Stay Connected</p>
+      <h2 class="st" id="social-h">Follow <em>@rccenfield</em></h2>
+      <div class="gbar" style="margin:18px auto;"></div>
+      <p class="sb">Follow us on social media for event announcements, service updates, encouragement and highlights from the Revival family.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;">
+        <a href="https://facebook.com/rccenfield" target="_blank" rel="noopener" class="btn bg" style="background:#1877F2;border-color:#1877F2;">Facebook</a>
+        <a href="https://youtube.com/@rccenfield" target="_blank" rel="noopener" class="btn bg" style="background:#FF0000;border-color:#FF0000;">YouTube</a>
+        <a href="https://instagram.com/rccenfield" target="_blank" rel="noopener" class="btn bg" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#bc1888);border-color:transparent;">Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ GIVE ONLINE ════════════ -->
+<section class="give-cta" aria-labelledby="give-ev-h">
+  <div class="give-cta-in">
+    <p class="ey ey-lt">Support Revival</p>
+    <h2 class="st st-wht" id="give-ev-h">Give <em>Online</em></h2>
+    <div class="gbar" style="margin:18px auto;"></div>
+    <p class="give-cta-p">Your generosity enables us to serve our community, run our social action programmes and fulfil God's vision for Enfield and beyond. Every gift makes a difference — thank you.</p>
+    <div class="give-cta-acts">
+      <a href="https://rcce.churchsuite.com/donate/" target="_blank" rel="noopener" class="btn bg">Give Online <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </section>
@@ -244,32 +213,29 @@
 <!-- ════════════ CROSS LINKS ════════════ -->
 <div class="xlinks" aria-label="Explore more">
   <div class="xlinks-grid">
+    <a href="../social_action/" class="xl">
+      <div class="xl-ph-wrap">
+        <div class="ph" style="height:100%;border-radius:0;border:none;">
+          <img src="/assets/img/community/car-wash2.webp" alt="Revival Church Enfield community gathering">
+        </div>
+      </div>
+      <div class="xl-over"><span class="xl-title">Social Action</span></div>
+    </a>
+    <a href="../how_to_find_us/" class="xl">
+      <div class="xl-ph-wrap">
+        <div class="ph" style="height:100%;border-radius:0;border:none;">
+          <img src="/assets/img/church-building.webp" alt="Revival Church Enfield community gathering">
+        </div>
+      </div>
+      <div class="xl-over"><span class="xl-title">How to Find Us</span></div>
+    </a>
     <a href="../contact/" class="xl">
       <div class="xl-ph-wrap">
-        <!--
-          📷 Add a photo: <img src="../images/contact-xl.jpg" alt="Get in touch with Revival Church Enfield">
-        -->
         <div class="ph" style="height:100%;border-radius:0;border:none;">
           <img src="/assets/img/contact.webp" alt="Revival Church Enfield community gathering">
         </div>
       </div>
-      <div class="xl-over"><span class="xl-title">I Am New Here</span></div>
-    </a>
-    <a href="../who_we_are/" class="xl">
-      <div class="xl-ph-wrap">
-        <div class="ph" style="height:100%;border-radius:0;border:none;">
-          <img src="/assets/img/pastors/pastor_nick2.webp" alt="Revival Church Enfield community gathering">
-        </div>
-      </div>
-      <div class="xl-over"><span class="xl-title">Who We Are</span></div>
-    </a>
-    <a href="../events/" class="xl">
-      <div class="xl-ph-wrap">
-        <div class="ph" style="height:100%;border-radius:0;border:none;">
-          <img src="/assets/img/food.webp" alt="Revival Church Enfield community events">
-        </div>
-      </div>
-      <div class="xl-over"><span class="xl-title">Events</span></div>
+      <div class="xl-over"><span class="xl-title">Contact</span></div>
     </a>
   </div>
 </div>
@@ -321,7 +287,7 @@
       <div class="ftimes">
         <div class="ftr"><span class="fday">Sunday</span><span class="fval">11:00 AM</span></div>
         <div class="ftr"><span class="fday">Kids &amp; Youth</span><span class="fval">11:20 AM</span></div>
-        <div class="ftr"><span class="fday">Fri Youth</span><span class="fval">6:00 PM</span></div>
+        <div class="ftr"><span class="fday">Fri Youth</span><span class="fval">7:00 PM</span></div>
       </div>
       <div style="margin-top:24px;">
         <h5>Watch Online</h5>
