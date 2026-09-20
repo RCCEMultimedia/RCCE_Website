@@ -442,6 +442,23 @@
   </div>
 </section>
 
+<!-- ════════════ INSTAGRAM ════════════ -->
+<section class="instagram-feed" aria-labelledby="instagram-h">
+  <div class="sec-in">
+    <div class="instagram-head">
+      <div>
+        <p class="ey">From Instagram</p>
+        <h2 class="st" id="instagram-h">Life at <em>Revival</em></h2>
+      </div>
+      <a href="https://instagram.com/rccenfield" target="_blank" rel="noopener" class="btn bgo">Follow @rccenfield <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="instagram-intro">A glimpse of church life, community and all that God is doing in Enfield.</p>
+    <div class="instagram-grid" id="instagram-grid" aria-live="polite" aria-busy="true">
+      <p class="instagram-status">Loading latest posts…</p>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ GIVE ONLINE ════════════ -->
 <section class="give-cta" aria-labelledby="give-h">
   <div class="give-cta-in">
@@ -639,6 +656,85 @@
     el.style.transition=`opacity .32s ease ${i*.04}s, transform .32s cubic-bezier(0.22,1,0.36,1) ${i*.04}s`;
     io.observe(el);
   });
+  /* Instagram photo feed — tokens stay in the server-side function. */
+  (() => {
+    const grid = document.getElementById('instagram-grid');
+    if (!grid) return;
+
+    const escapeHtml = value => String(value || '').replace(/[&<>'"]/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    })[char]);
+
+    fetch('/api/instagram', { headers: { Accept: 'application/json' } })
+      .then(response => {
+        if (!response.ok) throw new Error('Instagram feed unavailable');
+        return response.json();
+      })
+      .then(({ data }) => {
+        if (!Array.isArray(data) || !data.length) {
+          grid.innerHTML = '<p class="instagram-status">New photos will appear here soon.</p>';
+          return;
+        }
+
+        grid.innerHTML = data.map(post => {
+          const caption = post.caption ? escapeHtml(post.caption) : 'View this post on Instagram';
+          const image = escapeHtml(post.media_url || post.thumbnail_url);
+          const permalink = escapeHtml(post.permalink || 'https://instagram.com/rccenfield');
+
+          // An Instagram carousel can contain several photos. Keep its images on
+          // the site, rather than sending visitors away to browse them.
+          const slides = (post.children?.data || [])
+            .filter(item => item.media_type === 'IMAGE' && item.media_url)
+            .map(item => ({ media_url: item.media_url }));
+          if (slides.length > 1) {
+            return `<article class="instagram-post instagram-carousel" aria-label="Instagram photo carousel: ${caption}">
+              <img src="${escapeHtml(slides[0].media_url)}" alt="${caption}" loading="lazy" decoding="async">
+              <button class="instagram-carousel-control instagram-carousel-prev" type="button" aria-label="Previous photo" disabled>‹</button>
+              <span class="instagram-carousel-count" aria-live="polite">1 / ${slides.length}</span>
+              <button class="instagram-carousel-control instagram-carousel-next" type="button" aria-label="Next photo">›</button>
+            </article>`;
+          }
+          return `<a class="instagram-post" href="${permalink}" target="_blank" rel="noopener" aria-label="${caption}">
+            <img src="${image}" alt="${caption}" loading="lazy" decoding="async">
+            <span class="instagram-post-overlay">View on Instagram <span aria-hidden="true">↗</span></span>
+          </a>`;
+        }).join('');
+
+        const carouselPosts = data.filter(post => (post.children?.data || [])
+          .filter(item => item.media_type === 'IMAGE' && item.media_url).length > 1);
+        grid.querySelectorAll('.instagram-carousel').forEach((carousel, index) => {
+          carousel.instagramSlides = carouselPosts[index].children.data
+            .filter(item => item.media_type === 'IMAGE' && item.media_url);
+          carousel.instagramCaption = carouselPosts[index].caption || 'Instagram carousel photo';
+          carousel.instagramIndex = 0;
+        });
+      })
+      .catch(() => {
+        grid.innerHTML = '<p class="instagram-status">Visit <a href="https://instagram.com/rccenfield" target="_blank" rel="noopener">@rccenfield on Instagram</a> for the latest updates.</p>';
+      })
+      .finally(() => grid.setAttribute('aria-busy', 'false'));
+
+    grid.addEventListener('click', event => {
+      const control = event.target.closest('.instagram-carousel-control');
+      if (!control) return;
+      const carousel = control.closest('.instagram-carousel');
+      const direction = control.classList.contains('instagram-carousel-next') ? 1 : -1;
+      const nextIndex = carousel.instagramIndex + direction;
+      if (nextIndex < 0 || nextIndex >= carousel.instagramSlides.length) return;
+
+      carousel.instagramIndex = nextIndex;
+      const image = carousel.querySelector('img');
+      const count = carousel.querySelector('.instagram-carousel-count');
+      const previous = carousel.querySelector('.instagram-carousel-prev');
+      const next = carousel.querySelector('.instagram-carousel-next');
+      image.src = carousel.instagramSlides[nextIndex].media_url;
+      image.alt = `${carousel.instagramCaption} — photo ${nextIndex + 1} of ${carousel.instagramSlides.length}`;
+      count.textContent = `${nextIndex + 1} / ${carousel.instagramSlides.length}`;
+      previous.disabled = nextIndex === 0;
+      next.disabled = nextIndex === carousel.instagramSlides.length - 1;
+    });
+  })();
+
   var cyr=document.getElementById('cyr');if(cyr)cyr.textContent=new Date().getFullYear();
 </script>
 </body>
